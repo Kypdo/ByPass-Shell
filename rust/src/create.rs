@@ -17,19 +17,19 @@ pub fn create(name: &str) -> std::io::Result<()> {
     let errmess: &str = "Error in process. Please retry later";
 
     let mut src: String = name.into();
-    src.push_str("\\src");
+    src.push_str("/src");
 
     let mut build: String = name.clone().into();
-    build.push_str("\\build");
+    build.push_str("/build");
 
     let mut release: String = build.clone();
-    release.push_str("\\release");
+    release.push_str("/release");
 
     let mut debug: String = build.clone();
-    debug.push_str("\\debug");
+    debug.push_str("/debug");
 
     let mut main: String = src.clone();
-    main.push_str("\\main.c");
+    main.push_str("/main.c");
 
     mkdir(name, errmess, 1);
     mkdir(&src, errmess, 2);
@@ -46,10 +46,10 @@ pub fn create(name: &str) -> std::io::Result<()> {
     mf.write_all(b"}")?;
 
     let mut lock: String = name.clone().into();
-    lock.push_str("\\lock.wmg");
+    lock.push_str("/lock.wmg");
 
     let mut gitignore: String = name.clone().into();
-    gitignore.push_str("\\.gitignore");
+    gitignore.push_str("/.gitignore");
 
     let mut locker = File::create(lock)?;
     locker.write_all(b"DON'T DELETE IMPORTANT FILE")?;

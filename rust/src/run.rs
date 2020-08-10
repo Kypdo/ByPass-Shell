@@ -4,8 +4,8 @@ use std::path::Path;
 use std::process::Command;
 
 pub fn run() -> std::io::Result<()> {
-    let debug = ".\\build\\debug\\debug.exe";
-    let release = ".\\build\\release\\release.exe";
+    let debug = "./build/debug/debug.exe";
+    let release = "./build/release/release.exe";
 
     if Path::new(debug).exists() && !Path::new(release).exists() {
         Command::new(debug).status().expect("Cannot run binary");
